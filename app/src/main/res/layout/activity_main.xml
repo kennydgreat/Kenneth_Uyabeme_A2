@@ -6,13 +6,36 @@
     android:layout_height="match_parent"
     tools:context="com.example.kenny.kenneth_uyabeme_a2.MainActivity">
 
-    <TextView
+    <CheckBox
+        android:id="@+id/display_info_check_box"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/display_info_text"
+        android:textAppearance="@android:style/TextAppearance.Holo.Medium"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.449"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.983"
+        tools:ignore="RtlHardcoded" />
 
+    <ListView
+        android:id="@+id/social_media_list_view"
+        android:layout_width="323dp"
+        android:layout_height="269dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.511"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.158" />
 </android.support.constraint.ConstraintLayout>
