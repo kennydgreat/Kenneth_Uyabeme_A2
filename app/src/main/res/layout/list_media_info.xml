@@ -16,7 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="@android:style/TextAppearance.Holo.Medium"
-        android:visibility="invisible"
+        android:visibility="visible"
         tools:text="User ID" />
 
     <TextView
@@ -24,6 +24,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAppearance="@android:style/TextAppearance.Holo.Medium"
-        android:visibility="invisible"
+        android:visibility="visible"
         tools:text="Number of Contacts" />
 </LinearLayout>
