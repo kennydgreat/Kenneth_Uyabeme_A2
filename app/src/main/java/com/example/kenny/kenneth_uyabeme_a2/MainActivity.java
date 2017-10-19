@@ -1,9 +1,11 @@
 package com.example.kenny.kenneth_uyabeme_a2;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -15,6 +17,7 @@ public class MainActivity extends Activity {
     ListView socialMedialistview ; // ListView containing the social media account info
     CheckBox displayInfoCheckBox; // checkbox to display/hide the account ids
     SocialMediaAccountAdapter adapter; // adapter for listView
+    final static int DETAIL_ACTIVITY = 2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +41,7 @@ public class MainActivity extends Activity {
                         TextView childTextView = (TextView) childView.getChildAt(1);
                         TextView childTextView2 = (TextView) childView.getChildAt(2);
                         //set the visibility based on the whether the checkbox is
-                        //check or not.
+                        //checked or not.
                         if (displayInfoCheckBox.isChecked()) {
                             childTextView.setVisibility(View.VISIBLE);
                             childTextView2.setVisibility(View.VISIBLE);
@@ -52,6 +55,9 @@ public class MainActivity extends Activity {
         });
         displayInfoCheckBox.setChecked(true); //Make the checkbox checked on startup
 
+        ListViewItemListener socialMediaListListener = new ListViewItemListener();
+        socialMedialistview.setOnItemClickListener(socialMediaListListener);
+
     }
 
     private void loadSocialMediaAccounts(){
@@ -62,4 +68,26 @@ public class MainActivity extends Activity {
                                                     accounts);
         socialMedialistview.setAdapter(adapter);
     }
+/* ListView item answer class. This listener
+* 1) gets the data of the current item
+* 2) creates an intent and feeds the data into the intent
+* 3) starts up DetailActivity
+* */
+    private class ListViewItemListener implements AdapterView.OnItemClickListener{
+        @Override
+        public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+            //Getting the account object of account select
+            SocialMediaAccount current_account = (SocialMediaAccount) adapterView.getItemAtPosition(position);
+            /*Creating the intent to start DetailActivity and putting in the account data to used
+             by DetailActivity populate it's editTexts once it starts up
+             *  */
+            Intent intent = new Intent(getApplicationContext(), DetailActivity.class);
+            intent.putExtra("Social Media Site", current_account.getName())
+                    .putExtra("User ID", current_account.getUserId())
+                    .putExtra("Number of Contacts", current_account.getNumberOfContacts());
+            startActivityForResult(intent, DETAIL_ACTIVITY);
+
+        }
+    }
+
 }

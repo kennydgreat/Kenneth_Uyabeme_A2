@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Kenneth_Uyabeme_A2</string>
     <string name="display_info_text">Display Info</string>
+    <string name="social_media_site_string">Social Media Site</string>
+    <string name="user_id_string">User ID</string>
+    <string name="number_of_contact_string">Number of Contact</string>
 </resources>
