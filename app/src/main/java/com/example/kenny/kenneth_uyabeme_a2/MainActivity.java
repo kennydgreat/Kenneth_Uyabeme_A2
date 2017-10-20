@@ -18,6 +18,8 @@ public class MainActivity extends Activity {
     CheckBox displayInfoCheckBox; // checkbox to display/hide the account ids
     SocialMediaAccountAdapter adapter; // adapter for listView
     final static int DETAIL_ACTIVITY = 2;
+    static public final int DEFUALT_CONTACTS_NUM = 0; //if the default number of contacts isn't filled
+    int currentItemPosition; // position of the account item clicked in the listView
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,9 +71,10 @@ public class MainActivity extends Activity {
         socialMedialistview.setAdapter(adapter);
     }
 /* ListView item answer class. This listener
-* 1) gets the data of the current item
-* 2) creates an intent and feeds the data into the intent
-* 3) starts up DetailActivity
+* 1) gets the data and position of the current item
+* 2)Sets the position variable for updating once user saves
+* 3) creates an intent and feeds all that information into the intent
+* 4) starts up DetailActivity
 * */
     private class ListViewItemListener implements AdapterView.OnItemClickListener{
         @Override
@@ -81,6 +84,7 @@ public class MainActivity extends Activity {
             /*Creating the intent to start DetailActivity and putting in the account data to used
              by DetailActivity populate it's editTexts once it starts up
              *  */
+            currentItemPosition = position ;
             Intent intent = new Intent(getApplicationContext(), DetailActivity.class);
             intent.putExtra("Social Media Site", current_account.getName())
                     .putExtra("User ID", current_account.getUserId())
@@ -89,5 +93,25 @@ public class MainActivity extends Activity {
 
         }
     }
+    /**
+     * This override of onActivityResult
+     * 1) gets the account object of ListView item that was edited
+     * 2) updates the account values sent from the intent
+     * 3) notifies the adapter that item has been updated so the ListView displays the right
+     * data
+     */
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == DETAIL_ACTIVITY){
+            if (resultCode == RESULT_OK){
+                SocialMediaAccount edittedAccount = (SocialMediaAccount) adapter.getItem(currentItemPosition);
+                edittedAccount.setName(data.getStringExtra("Social Media Site"));
+                edittedAccount.setUserId(data.getStringExtra("User ID"));
+                edittedAccount.setNumberOfContacts(data.getIntExtra("Number of Contacts", DEFUALT_CONTACTS_NUM));
+                adapter.notifyDataSetChanged();
 
+
+            }
+        }
+    }
 }

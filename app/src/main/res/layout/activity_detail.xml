@@ -35,7 +35,7 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="@string/user_id_string"
-        android:inputType="textEmailAddress|textPersonName|number"
+        android:inputType="text|textPersonName"
         android:textAppearance="@android:style/TextAppearance.Holo.Medium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="0.156"
@@ -48,9 +48,26 @@
         android:id="@+id/social_media_site_edittext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="@string/social_media_site_string"
-        android:inputType="textPersonName|number"
+        android:inputType="text|textPersonName"
+        android:textAppearance="@android:style/TextAppearance.Holo.Medium"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.156"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.06" />
+
+    <Button
+        android:id="@+id/save_button"
+        android:layout_width="180dp"
+        android:layout_height="51dp"
+        android:text="@string/save_string"
         android:textAppearance="@android:style/TextAppearance.Holo.Medium"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="8dp"
@@ -60,6 +77,5 @@
         app:layout_constraintRight_toRightOf="parent"
         android:layout_marginLeft="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintHorizontal_bias="0.156"
-        app:layout_constraintVertical_bias="0.06" />
+        app:layout_constraintHorizontal_bias="0.127" />
 </android.support.constraint.ConstraintLayout>
