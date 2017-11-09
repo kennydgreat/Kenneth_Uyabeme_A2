@@ -13,7 +13,7 @@ public class SocialMediaAccount {
     private String name;// Name of the social media site
     private String userId; // the site's user ID
     private int numberOfContacts; // the account's number of contacts
-
+    private boolean visible = true ; // variable to keep track of the visibility of the account's textViews
     //Constructor
     public SocialMediaAccount(String name, String userId, int numberOfContacts){
         //setting fields
@@ -64,5 +64,13 @@ public class SocialMediaAccount {
         accounts.add(new SocialMediaAccount("Tumblr", "Vein902", 90));
 
         return accounts;
+    }
+// Getter and setter for visible variable
+    public boolean isVisible() {
+        return visible;
+    }
+
+    public void setVisibility(boolean visible) {
+        this.visible = visible;
     }
 }

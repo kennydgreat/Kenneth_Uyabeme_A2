@@ -44,32 +44,15 @@ public class MainActivity extends Activity {
         editor = userPreferences.edit();
 
         loadSocialMediaAccounts();//loading data into the social media listView
-
-
-        //Setting checkBox listener so the user  ID and number of contacts  are displayed if the
-        //checkbox is checked
-        //saving the displayInfoCheckBox Value
+        /*This block of code for the displayInfoCheckBox listener is
+        1) Setting checkBox listener so the user  ID and number of contacts  are displayed if the
+            checkbox is checked (refer to adapter class' getView method to see how this is done)
+        2) saving the displayInfoCheckBox Value
+        */
         displayInfoCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
-                //For every item in the listview get the child viewgroup( which contains the
-                //Text views for each social media account)
-                for (int i = 0; i < socialMedialistview.getCount(); i++) {
-                    ViewGroup childView = (ViewGroup) socialMedialistview.getChildAt(i);
-                    //Since we know the userid and num of conntacts are the second and third
-                    //textView we simply get the second and third (1 and 2 indies)
-                    TextView childTextView = (TextView) childView.getChildAt(1);
-                    TextView childTextView2 = (TextView) childView.getChildAt(2);
-                    //set the visibility based on the whether the checkbox is
-                    //checked or not.
-                    if (b) {
-                        childTextView.setVisibility(View.VISIBLE);
-                        childTextView2.setVisibility(View.VISIBLE);
-                    } else {
-                        childTextView.setVisibility(View.GONE);
-                        childTextView2.setVisibility(View.GONE);
-                    }
-                }
+                setAccountsVisibility(b);
                 editor.putBoolean("displayInfoCheckBoxValue", displayInfoCheckBox.isChecked());
                 editor.apply();
             }
@@ -81,6 +64,7 @@ public class MainActivity extends Activity {
         //Creating and setting listView's OnItemClickListener
         ListViewItemListener socialMediaListListener = new ListViewItemListener();
         socialMedialistview.setOnItemClickListener(socialMediaListListener);
+        //Making the checkbox value what it was before app restarted or true if this the first time
 
     }
 
@@ -148,12 +132,28 @@ public class MainActivity extends Activity {
 
         editor.putBoolean("displayInfoCheckBoxValue", displayInfoCheckBox.isChecked());
         editor.apply();    }
-
+    /*
+    * This override of onResume
+    * 1) calls the super class' onResume method
+    * 2) sets the displayInfoCheckBox to be what it was the last time the app was open through userPreferences
+    * 3) sets the visibility of the account details based on this value*/
     @Override
     protected void onResume(){
         super.onResume();
-       // displayInfoCheckBox.setChecked(userPreferences.getBoolean("displayInfoCheckBoxValue", true));
+
+        displayInfoCheckBox.setChecked(userPreferences.getBoolean("displayInfoCheckBoxValue", false));
+        setAccountsVisibility(displayInfoCheckBox.isChecked());
     }
-
-
+    /*
+    * This method
+    * 1) Goes through all account objects in the adapter and set their visible variables to the visibility
+    * parameter
+    * 2) calls the notifyDataSetChanged method to trigger getView*/
+    public void setAccountsVisibility(boolean visibility){
+        for (int i = 0; i < adapter.getCount(); i++){
+            SocialMediaAccount account = (SocialMediaAccount) adapter.getItem(i);
+            account.setVisibility(visibility);
+        }
+        adapter.notifyDataSetChanged();
+    }
 }

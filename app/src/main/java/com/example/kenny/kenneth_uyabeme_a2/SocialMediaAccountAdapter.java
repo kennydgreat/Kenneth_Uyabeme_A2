@@ -46,6 +46,14 @@ public class SocialMediaAccountAdapter extends ArrayAdapter {
         nameTextView.setText(account.getName());
         userIdTextView.setText(account.getUserId());
         numberOfContactsTextView.setText(Integer.toString(account.getNumberOfContacts()));
+        //Setting the visibility of the userID and number of contacts textViews based on the visible variable of the account objects
+        if (account.isVisible()){
+            userIdTextView.setVisibility(View.VISIBLE);
+            numberOfContactsTextView.setVisibility(View.VISIBLE);
+        }else{
+            userIdTextView.setVisibility(View.GONE);
+            numberOfContactsTextView.setVisibility(View.GONE);
+        }
 
 
         //Returning the modified view
