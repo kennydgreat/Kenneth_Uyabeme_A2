@@ -1,4 +1,4 @@
-package com.example.kenny.kenneth_uyabeme_a2;
+package com.example.kenny.kenneth_uyabeme_a2.Model;
 
 import java.util.ArrayList;
 

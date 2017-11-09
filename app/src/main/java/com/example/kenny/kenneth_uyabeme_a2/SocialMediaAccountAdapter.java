@@ -8,8 +8,9 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.example.kenny.kenneth_uyabeme_a2.Model.SocialMediaAccount;
+
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by kenny on 2017-10-15.
