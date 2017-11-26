@@ -39,7 +39,6 @@ public class DetailActivity extends Activity {
                 data.putExtra("Social Media Site", socialMediaSiteNameEditText.getText().toString());
                 data.putExtra("User ID", userIDEditText.getText().toString());
                 data.putExtra("Number of Contacts", Integer.valueOf(numberOfContactsEditText.getText().toString()));
-
                 setResult(RESULT_OK, data);
                 finish();
             }

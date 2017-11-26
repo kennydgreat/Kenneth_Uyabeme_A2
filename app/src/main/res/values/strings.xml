@@ -5,4 +5,7 @@
     <string name="user_id_string">User ID</string>
     <string name="number_of_contact_string">Number of Contact</string>
     <string name="save_string">Save</string>
+    <string name="facebook_string">Facebook</string>
+    <string name="instagram_string">Instagram</string>
+    <string name="tumblr_string">Tumblr</string>
 </resources>

@@ -1,5 +1,10 @@
 package com.example.kenny.kenneth_uyabeme_a2.Model;
 
+import android.content.Context;
+
+import com.example.kenny.kenneth_uyabeme_a2.MainActivity;
+import com.example.kenny.kenneth_uyabeme_a2.R;
+
 import java.util.ArrayList;
 
 /**
@@ -13,7 +18,6 @@ public class SocialMediaAccount {
     private String name;// Name of the social media site
     private String userId; // the site's user ID
     private int numberOfContacts; // the account's number of contacts
-    private boolean visible = true ; // variable to keep track of the visibility of the account's textViews
     //Constructor
     public SocialMediaAccount(String name, String userId, int numberOfContacts){
         //setting fields
@@ -57,20 +61,13 @@ public class SocialMediaAccount {
 
 
     //This creates the social media account data and returns the data(arraylist)
-    public static ArrayList<SocialMediaAccount> getSocialMedia(){
+    public static ArrayList<SocialMediaAccount> getSocialMedia(Context context){
         ArrayList<SocialMediaAccount> accounts = new ArrayList<>();
-        accounts.add(new SocialMediaAccount("Facebook", "Vein_doe", 300));
-        accounts.add(new SocialMediaAccount("Instagram", "Vein_DDD", 25));
-        accounts.add(new SocialMediaAccount("Tumblr", "Vein902", 90));
+        accounts.add(new SocialMediaAccount(context.getResources().getString(R.string.facebook_string), "Vein_doe", 300));
+        accounts.add(new SocialMediaAccount(context.getString(R.string.instagram_string), "Vein_DDD", 25));
+        accounts.add(new SocialMediaAccount(context.getString(R.string.tumblr_string), "Vein902", 90));
 
         return accounts;
     }
-// Getter and setter for visible variable
-    public boolean isVisible() {
-        return visible;
-    }
 
-    public void setVisibility(boolean visible) {
-        this.visible = visible;
-    }
 }
