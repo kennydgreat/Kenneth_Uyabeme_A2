@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+/*This class is the activity where the user edits the account details*/
 public class DetailActivity extends Activity {
     //EditTexts
     EditText socialMediaSiteNameEditText;
@@ -15,7 +16,9 @@ public class DetailActivity extends Activity {
     EditText numberOfContactsEditText;
     Button saveButton;
 
-
+    /*This override of OnCreate
+    * 1) gets references to editTexts and save button
+    * 2) creates the onclick listener for the save button*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +31,7 @@ public class DetailActivity extends Activity {
         //Getting the data from mainActivity and populating the editText with current account info
         //(before editing)
         getMainActivityData();
-        /*Once the save button is click the
+        /*Once the save button is clicked the
         * 1) editText Values are taken and put in the intent
         * 2) the intent is sent to mainActivity
         * 3) this activity is terminated*/
@@ -48,7 +51,7 @@ public class DetailActivity extends Activity {
     }
     /*This method
     *1) Gets the intent from MainActivity
-    * 2) Get the account data if is was sent
+    * 2) Gets the account data it is was sent
     * 3) sets the appropriate editTexts
      *  */
     public void getMainActivityData(){

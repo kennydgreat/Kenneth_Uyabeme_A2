@@ -9,16 +9,18 @@ import java.util.ArrayList;
 
 /**
  * Created by kenny on 2017-10-15.
- * This class is the model which holds the data for the Social Media Accounts apps
+ * This class is the model which holds the data for the Social Media Accounts app
  *
  */
-
 public class SocialMediaAccount {
     //Class fields
     private String name;// Name of the social media site
     private String userId; // the site's user ID
     private int numberOfContacts; // the account's number of contacts
     //Constructor
+    /*
+    * This
+    * 1) Sets the name, userId, and numberOfContact to the repective parameters*/
     public SocialMediaAccount(String name, String userId, int numberOfContacts){
         //setting fields
         this.name = name;
@@ -60,7 +62,10 @@ public class SocialMediaAccount {
     //-----------------
 
 
-    //This creates the social media account data and returns the data(arraylist)
+    /*
+    *This static method
+    * 1)creates the social media account data and returns the data(arraylist)
+    * */
     public static ArrayList<SocialMediaAccount> getSocialMedia(Context context){
         ArrayList<SocialMediaAccount> accounts = new ArrayList<>();
         accounts.add(new SocialMediaAccount(context.getResources().getString(R.string.facebook_string), "Vein_doe", 300));
